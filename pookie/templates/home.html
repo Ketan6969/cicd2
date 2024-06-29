@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block main %}
+    <h1>Welcome to Pookieee's World!</h1>
+    <p>This is Pookie and he loves napping on keyboards and chasing virtual mice!</p>
+    <img src="{{ url_for('static', filename='cat.jpg') }}" alt="Cute Cat">
+    <p>Remember, when in doubt, just add more cats!</p>
+    <p>Why did the cat sit on the computer? Because it wanted to keep an eye on the mouse!</p>
+{% endblock %}

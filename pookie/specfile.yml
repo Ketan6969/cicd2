@@ -1,0 +1,27 @@
+version : 0.2
+
+env:
+  DOCKER_USERNAME : /app/docker/username
+  DOCKER_PASSWORD : /app/docker/password
+  DOCKER_URL : /app/docekr-registry/url
+
+phases: 
+  install:
+    runtime-version : 
+      python : latest
+    
+    pre_build:
+      commands:
+        - echo "Installing required files..."
+        - pip install -r requirements.txt
+        - cd /pookie/
+    
+    build:
+      commands:
+        - echo "Building the Docker image..."
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_URL"
+        - docker build -t "$DOCKER_URL/pookie-flask:latest"
+        - docker push "$DOCKER_URL/pookie-flask:latest"
+    post_build:
+      commands:
+        - echo "Build completed!!!"
