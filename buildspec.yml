@@ -15,9 +15,8 @@ phases:
     commands:
       - echo "Installing required files..."
       - pip install -r requirements.txt
-      - cd 
-      - cd pookie/
-    
+      - echo "Build stage complete!!"
+        
   build:
     commands:
       - echo "Building the Docker image..."
