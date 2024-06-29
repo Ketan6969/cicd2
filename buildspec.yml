@@ -11,18 +11,18 @@ phases:
     runtime-versions: 
       python : latest
     
-    pre_build:
-      commands:
-        - echo "Installing required files..."
-        - pip install -r requirements.txt
-        - cd /pookie/
+  pre_build:
+    commands:
+      - echo "Installing required files..."
+      - pip install -r requirements.txt
+      - cd /pookie/
     
-    build:
-      commands:
-        - echo "Building the Docker image..."
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_URL"
-        - docker build -t "$DOCKER_URL/pookie-flask:latest"
-        - docker push "$DOCKER_URL/pookie-flask:latest"
-    post_build:
-      commands:
-        - echo "Build completed!!!"
+  build:
+    commands:
+      - echo "Building the Docker image..."
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_URL"
+      - docker build -t "$DOCKER_URL/pookie-flask:latest"
+      - docker push "$DOCKER_URL/pookie-flask:latest"
+  post_build:
+    commands:
+      - echo "Build completed!!!"
