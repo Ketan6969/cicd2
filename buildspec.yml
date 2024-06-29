@@ -1,9 +1,10 @@
 version : 0.2
 
 env:
-  DOCKER_USERNAME : /app/docker/username
-  DOCKER_PASSWORD : /app/docker/password
-  DOCKER_URL : /app/docekr-registry/url
+  parameter-store:
+    DOCKER_USERNAME : /app/docker/username
+    DOCKER_PASSWORD : /app/docker/password
+    DOCKER_URL : /app/docekr-registry/url
 
 phases: 
   install:
