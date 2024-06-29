@@ -8,7 +8,7 @@ env:
 
 phases: 
   install:
-    runtime-version : 
+    runtime-versions: 
       python : latest
     
     pre_build:
