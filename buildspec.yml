@@ -9,13 +9,14 @@ env:
 phases: 
   install:
     runtime-versions: 
-      python : latest
+      python : 3.10
     
   pre_build:
     commands:
       - echo "Installing required files..."
       - pip install -r requirements.txt
-      - cd /pookie/
+      - cd 
+      - cd pookie/
     
   build:
     commands:
