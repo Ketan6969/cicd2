@@ -1,5 +1,5 @@
 #base image
-FROM python:lateset
+FROM python:3.10.12
 
 # Setting the working dir in the container
 WORKDIR /app
