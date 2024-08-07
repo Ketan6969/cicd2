@@ -1,5 +1,5 @@
 #base image
-FROM python:3.10.12
+FROM python:3.10.12 as build
 
 # Setting the working dir in the container
 WORKDIR /app
