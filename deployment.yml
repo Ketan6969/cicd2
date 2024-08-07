@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pookie-deployment
+  labels:
+    app: pookie-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pookie-deployment
+  template:
+    metadata:
+      labels:
+        app: pookie-deployment
+    spec:
+      containers:
+      - name: pookie-deployment
+        image: ketan2004/pookie
+        ports:
+        - containerPort: 5000

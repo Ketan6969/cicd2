@@ -1,20 +1,21 @@
-#base image
-FROM python:3.10.12 as build
+FROM python:3.9 AS build
 
-# Setting the working dir in the container
 WORKDIR /app
 
-#Copying the Requirements file 
-COPY requirements.txt .
+COPY . /app
 
-#installing the requirements
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-#Copying the application code into the container
-COPY . .
+#---------------------------Stage 1 end---------------------------
 
-#Exposing the port 5000
+FROM python:3.11-slim-buster
+
+WORKDIR /app
+
+COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.11/site-packages
+
+COPY --from=build /app /app
+
 EXPOSE 5000
 
-#
-CMD [ "python" , "pookie/main.py"]
+CMD [ "python" , "pookie/main.py" ]
